@@ -80,7 +80,8 @@ const typeDefs = gql`
 
 const resolvers = {
     Query: {
-        todos: (root, args) => {
+        todos: (root, args,context) => {
+            console.log(context.user)
             return todos
         },
         todo: (root, { id }) => {
@@ -104,7 +105,9 @@ const context = ({ req }) => {
     const token = req.headers.authorization || ''
     const splitToken = token.split(' ')[1]
     try {
-        jwt.verify(splitToken, SECRET_KEY)
+        var decoded = jwt.verify(splitToken, SECRET_KEY)
+        req.user = decoded
+        return {user:req.user}
     } catch (e) {
         throw new AuthenticationError(
             'Authentication token is invalid, please log in',
