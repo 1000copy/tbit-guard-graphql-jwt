@@ -20,6 +20,18 @@
 
 	{szone1}
 
+## extensions
+
+ "errors": [
+    {
+      "message": "not login",
+      "path": [
+        "szone1"
+      ],
+      "extensions": {
+        "code": "UNAUTHENTICATED",
+    }
+
 ## result
 
 	"secret garden"
@@ -41,3 +53,4 @@
 	{
 	    "Authorization": "Bearer eyJhbGciOiJIUzI..."
 	}
+

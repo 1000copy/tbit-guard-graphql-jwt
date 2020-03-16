@@ -24,7 +24,7 @@ const context = ({ req }) => {
 }
 
 const express = require('express');
-const { ApolloServer, gql } = require('apollo-server-express');
+const { ApolloServer, gql, AuthenticationError} = require('apollo-server-express');
 const typeDefs = gql`
   type Query {
     hello: String
@@ -38,7 +38,7 @@ const resolvers = {
     hello: () => 'Hello world!',
     szone1: (root,{user,password},context) => {
         if(!context.user)
-            throw new Error('not login')
+            throw new AuthenticationError('not login')
         else{
             console.log(context.user)
             return 'secret garden'
@@ -49,7 +49,7 @@ const resolvers = {
             const token = jwt.sign({ user:user },SECRET_KEY)
             return token            
         } else {
-            throw new Error('login failure')
+            throw new AuthenticationError('login failure')
         }
     },
     logout: ()=> 'logout/remove req.header.Authorization = null ,it is ok'
