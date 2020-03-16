@@ -8,7 +8,7 @@ const SECRET_KEY =
 
 const context = ({ req }) => {
     // get the user token from the headers
-
+    console.log(req.url)
     const token = req.headers.authorization || ''    
     // console.log('token',token)
     try {
