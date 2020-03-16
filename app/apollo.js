@@ -8,6 +8,7 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     hello: () => 'Hello world!',
+    hello: () => 'Hello world!',
   },
 };
 const server = new ApolloServer({ typeDefs, resolvers });
