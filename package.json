@@ -8,7 +8,7 @@
     "author": "Reco",
     "license": "ISC",
     "dependencies": {
-        "express": "^4.16.4",
+        "express": "^4.17.3",
         "apollo-server-express": "^2.4.0",
         "bcrypt": "^3.0.4",
         "body-parser": "^1.18.3",
